@@ -1,0 +1,15 @@
+C:\Users\Admin\Desktop\repo\Examples\Ex001\bin\Debug\net7.0\Ex001.exe
+C:\Users\Admin\Desktop\repo\Examples\Ex001\bin\Debug\net7.0\Ex001.deps.json
+C:\Users\Admin\Desktop\repo\Examples\Ex001\bin\Debug\net7.0\Ex001.runtimeconfig.json
+C:\Users\Admin\Desktop\repo\Examples\Ex001\bin\Debug\net7.0\Ex001.dll
+C:\Users\Admin\Desktop\repo\Examples\Ex001\bin\Debug\net7.0\Ex001.pdb
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\Ex001.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\Ex001.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\Ex001.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\Ex001.AssemblyInfo.cs
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\Ex001.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\Ex001.dll
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\refint\Ex001.dll
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\Ex001.pdb
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\Ex001.genruntimeconfig.cache
+C:\Users\Admin\Desktop\repo\Examples\Ex001\obj\Debug\net7.0\ref\Ex001.dll
