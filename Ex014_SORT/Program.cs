@@ -32,3 +32,6 @@ PrintArray(arr);
 SelectionSort(arr);
 
 PrintArray(arr);
+
+//ДЗ: сделать то же, только  =в обратном порядке, от большого к малому
+
