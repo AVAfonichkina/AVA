@@ -58,3 +58,11 @@ else
     }
     Console.WriteLine(number % 10); // аналогично
 }
+// из дз 1
+
+
+
+
+
+
+
