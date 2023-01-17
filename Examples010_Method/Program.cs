@@ -1,16 +1,21 @@
-﻿int [] array = {1, 12, 31, 4, 18, 15, 16, 17, 18};
+﻿
 
-int n = array.Length;
-int find = 18;
 
-int index = 0;
+//Напишите программу, 
+//которая принимает на вход координаты двух точек 
+// находит расстояние между ними в 2D пространстве.
+//A (3,6); B (2,1) -> 5,09
+//A (7,-5); B (1,-1) -> 7,21
 
-while (index < n)
+int x1 = 3;
+int x2 = 2;
+int y1 = 6;
+int y2 = 1;
+
+double distance = GetDistance(x1, x2, y1, y2);
+Console.WriteLine(distance);
+
+double GetDistance(int x1, int x2, int y1, int y2)
 {
-    if(array[index] == find)
-    {
-        Console.WriteLine(index);
-        break;
-    }
-    index++;
+    return Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
