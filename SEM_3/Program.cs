@@ -42,22 +42,7 @@ while (number >= 100)
 }
 Console.WriteLine(number % 10);
 
-// Напишите программу, которая выводит третью цифру 
-// заданного числа или сообщает, что третьей цифры нет.
 
-int number = 123;
-if (number < 100)
-{
-    Console.WriteLine("исло не то");
-}
-else
-{
-    while (number >= 100)
-    {
-        number = number / 10 //надо доделать для этой задачи
-    }
-    Console.WriteLine(number % 10); // аналогично
-}
 
 
 
