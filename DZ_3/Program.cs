@@ -52,43 +52,46 @@
 // 5 -> 1, 8, 27, 64, 125
 // int n = 5;
 
-// for (int i = 0; i < n; i++)
-// {
-//    Console.WriteLine(i*i*i);
-// }
+for (int i = 0; i < n; i++) // конечно этот способ мне куда больше нравится.
+{
+  Console.WriteLine(i*i*i);
+}
 
+// "не колхозный способ":
 
-int GetNumberByUser(string text)
-  {
-    Console.Write(text + ": ");
-    return Convert.ToInt32(Console.ReadLine());
-  }
+int GetNumberByUser()
+{
+  Console.WriteLine("напишите любое целое число от 1 д N");
+  return Convert.ToInt32(Console.ReadLine());
+}
 
 int[] CreateArray(int size)
-  {
+{
     return new int[size + 1];
-  }
+}
 
-void GetCubes(int[] colNumber)
+void GetCube(int[] collectionNumber)
+{
+   int count = collectionNumber.Length;
+   for (int i = 1; i < count; i++)
+   {
+     collectionNumber[i] = i * i * i;
+   }
+}
+
+void Print(int[] numbers)
+{
+  //string output = String.Empty; // делаем так, чтобы обнулить output на всякий 
+  int size = numbers.Length;
+  for (int i = 1; i < size; i++)
   {
-    int count = colNumber.Length;
-    for (int i = 0; i < count; i++)
-    {
-      colNumber[i] = i * i * i;
-    }
+    Console.WriteLine(numbers[i]);
+    //output = output + $"{i}^3 = {numbers[i]}\n"; Все методы "для красоты" пока что отложим..
   }
+  //return output;
+}
 
-string Print(int[] numbers)
-  {
-    string output = String.Empty;
-    int size = numbers.Length;
-    for (int i = 0; i < size; i++)
-    {
-      output = output + $"{i}^3 = {numbers[i]}\n";
-    }
-    return output;
-  }
-
-GetNumberByUser ("Введите N: ");
-CreateArray(countbyuser);
-GetCubes(colNumber[i]);
+int sizego = GetNumberByUser();
+int[] arrCube = CreateArray(sizego);
+GetCube(arrCube);
+Print(arrCube);
