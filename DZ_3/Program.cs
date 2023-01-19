@@ -7,19 +7,19 @@
 // 23432 -> да
 // НЕЛЬЗЯ ИСПОЛЬЗОВАТЬ СТРОКИ
 
-// bool Palindrome(int val1)
-// {
-//     int val2 = 0;
-//     int t = val1;
-//     while (val1 > 0)
-//     {
-//         int f = val1 % 10;
-//         val1 = val1 / 10;
-//         val2 = val2 * 10 + f;
-//     }
-//     return t == val2;
-// }
-// Console.WriteLine(Palindrome(14112));
+bool Palindrome(int val1)
+{
+    int val2 = 0;
+    int t = val1;
+    while (val1 > 0)
+    {
+        int f = val1 % 10;
+        val1 = val1 / 10;
+        val2 = val2 * 10 + f;
+    }
+    return t == val2;
+}
+Console.WriteLine(Palindrome(14112));
 
 
 // Задача 21
@@ -28,20 +28,20 @@
 // между ними в 3D пространстве.
 // A (3,6,8); B (2,1,-7), -> 15.84
 // A (7,-5, 0); B (1,-1,9) -> 11.53
-// double GetDistance(int x1, int x2, int y1, int y2, int z1, int z2)
-// {
-//     return Math.Sqrt((x1 - x2) * (x1 - x2) 
-//                     + (y1 - y2) * (y1 - y2) 
-//                     + (z1 - z2) * (z1 - z2));
-// }
-// int x1 = 0;
-// int x2 = 8;
-// int y1 = 0;
-// int y2 = 6;
-// int z1 = 0;
-// int z2 = 0;
+double GetDistance(int x1, int x2, int y1, int y2, int z1, int z2)
+{
+    return Math.Sqrt((x1 - x2) * (x1 - x2) 
+                    + (y1 - y2) * (y1 - y2) 
+                    + (z1 - z2) * (z1 - z2));
+}
+int x1 = 0;
+int x2 = 8;
+int y1 = 0;
+int y2 = 6;
+int z1 = 0;
+int z2 = 0;
 
-// Console.WriteLine(GetDistance(x1, x2, y1, y2, z1, z2));
+Console.WriteLine(GetDistance(x1, x2, y1, y2, z1, z2));
 
 
 
