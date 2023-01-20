@@ -68,7 +68,7 @@ int IntPow(int number, int pow)
 // string <- (int[] , int)
 string GoodPrint(int[] bin, int dec)
 {
-  return $"{String.Join("", bin)} >> {dec}";
+  return $"\n{String.Join("", bin)} >> {dec}";
 }
 int length = GetNumberByUser("Введите любое целое число - длину двоичного числа: ");
 Console.WriteLine();
