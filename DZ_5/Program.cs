@@ -4,58 +4,84 @@
 // Результат запишите в новом массиве.
 // СДЕЛАТЬ МИНИМУМ ТРИ МЕТОДА
 
-1. Считывание данных от пользователя 
-   1. Считать int число
-   int <- string
-   2. Считать double число
-   double <- string
+// Считывание данных от пользователя 
+// 1. Считать int число
+// int <- string
+// 2. Считать double число
+// double <- string
 
-   int GetNumberByUser(string text)
-  {
-    Console.Write(text);
-    return Convert.ToInt32(Console.ReadLine());
-  }
 
-2. Создать массив
-   1. int-чисел
-   int[] <- int 
-   2. double-чисел
-   double[] <- int 
-
-   int[] CreateArray(int size)
-  {
-    return new int[size];
-  }
-
-3. Заполнить массив
-   1. Случайным образом
-   int[] <- (int, min, max)
-   double[]<- (int)
-
-   2. с клавиатуры
-   int[] <- (void)
-   double[]<- (void)
-
-void GetCubes(int[] colNumber)
-  {
-    int count = colNumber.Length;
-    for (int i = 0; i < count; i++) 
-      colNumber[i] = Random.Shared.Next(2);
-  }
-
-4. Найти произведения
-   int[] <- int[]
-   double[] <- double[]
-
-   res[i] = a[i] * a[N - 1 - i]
-
-5. Распечатать
-   string <- int[]
-   ТЕКСТОВЫЙ ФАЙЛ <- int[]
-
-string GoodPrint(int[] bin, int dec)
+string GetNumberByUser(int[] array)
 {
-  return $"\n{String.Join("", bin)} >> {dec}";
+  return $"[{String.Join(",", array)}]";;
 }
 
-     
+int ReadArrayLength(string text)
+{
+  Console.Write(text);
+  return int.Parse(Console.ReadLine());
+}
+
+// Создать массив
+// 1. int-чисел
+// int[] <- int 
+// 2. double-чисел
+// double[] <- int  
+int[] CreateArray(int length)
+{
+  return new int[length];
+}
+
+// Заполнить массив
+// 1. Случайным образом
+// int[] <- (int, min, max)
+// double[]<- (int)
+// 2. с клавиатуры
+// int[] <- (void)
+// double[]<- (void)
+
+void FillArray(int[] array)
+{
+  Random completion = new Random();
+  for (int i = 0; i < array.Length; i++)
+  {
+    array[i] = completion.Next(1, 10);
+  }
+}
+
+// Найти произведения
+//  int[] <- int[]
+//  double[] <- double[]
+//  res[i] = a[i] * a[N - 1 - i]
+
+int[] ProductOfNumbers(int[] array)
+{
+  int[] result;
+  int size = array.Length / 2; 
+  if (array.Length % 2 == 1) 
+  {
+    size++; 
+  }
+result = new int[size];
+
+  for (int i = 0; i < size; i++) 
+  {
+    result[i] = array[i] * array[array.Length - 1 - i];
+  }
+  if (array.Length % 2 == 1)  
+  {
+    result[size - 1] = array[array.Length / 2];
+  }
+  return result; 
+}
+
+// Распечатать новый массив
+//  string <- int[]
+//  ТЕКСТОВЫЙ ФАЙЛ <- int[]
+
+int length = ReadArrayLength("Введите длину массива (N): ");
+int[] array = CreateArray(length);
+FillArray(array);
+int[] result = ProductOfNumbers(array);
+Console.WriteLine(GetNumberByUser(array) + " -> " + 
+GetNumberByUser(result));

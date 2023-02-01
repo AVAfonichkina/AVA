@@ -75,3 +75,11 @@ while (val > 0)
   val = val / 16;
 }
 Console.WriteLine(res);
+
+// Программа, которая будет создавать 
+// копию заданного массива с помощью поэлементарного копирования
+int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+Console.WriteLine(array[2]);
+int[] b = array;
+b[2] = 777;
+Console.WriteLine(a[2]);
