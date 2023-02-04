@@ -6,7 +6,7 @@
 // 1 -3,3 8 -9,9
 // 8 7,8 -7,1 9
 
-double RandomNumberBetween(double minValue, double maxValue, Random rnd)
+double RandomNumber(double minValue, double maxValue, Random rnd)
 {
     var next = rnd.NextDouble();
     return minValue + (next * (maxValue - minValue));
@@ -42,13 +42,13 @@ void FillArray(double[,] matrix, Random rnd)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = RandomNumberBetween(-10, 10, rnd);
+            matrix[i, j] = RandomNumber(-10, 10, rnd);
         }
     }
 }
 
-int m = ReadDimension("Введите m: ");
-int n = ReadDimension("Введите n: ");
+int m = ReadDimension("Введите случайное число m: ");
+int n = ReadDimension("Введите случайное число n: ");
 double[,] matrix = new double[m, n];
 Random rnd = new Random();
 FillArray(matrix, rnd);
@@ -65,63 +65,49 @@ GoodPrint(matrix);
 // 8 4 2 4
 // 17 -> такого числа в массиве нет
 
-void GoodPrint(int[,] matrix, int rowsNumber, int columnsNumber)
+// 1. Ввод данных пользователем:
+
+int rows = ReadInt("Введите индекс элемента: ");
+int colums = ReadInt("Введите индекс столбца: ");
+int[,] numbers = new int[9, 8];
+FillMatrix(numbers);
+PrintArray2D(numbers);
+
+if (rows < numbers.GetLength(0) && colums < numbers.GetLength(1)) Console.WriteLine(numbers[rows, colums]);
+else Console.WriteLine($"{rows}{colums} -> такого числа в массиве нет");
+
+
+// 2. Заполнение массива рандомными числами от 1 до 9
+void FillMatrix(int[,] array)
 {
-    for (int rowIndex = 0; rowIndex < rowsNumber; rowIndex++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int columnIndex = 0; columnIndex < columnsNumber; columnIndex++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write(matrix[rowIndex, columnIndex]);
-
-            if (columnIndex != columnsNumber - 1)
-            {
-                Console.Write(", ");
-            }
+            array[i, j] = new Random().Next(1, 10);
         }
+    }
+}
 
+// 3. Метод вывода массива
+void PrintArray2D(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
         Console.WriteLine();
     }
+    Console.WriteLine();
 }
 
-void FillMatrix(int[,] matrix, int rowsNumber, int columnsNumber)
+// 4. Метод ввода данных
+int ReadInt(string message)
 {
-    var rnd = new Random();
-    for (int rowIndex = 0; rowIndex < rowsNumber; rowIndex++)
-    {
-        for (int columnIndex = 0; columnIndex < columnsNumber; columnIndex++)
-        {
-            matrix[rowIndex, columnIndex] = rnd.Next(0, 10);
-        }
-    }
-}
-
-void PrintNumberAtInputPosition(int inputPosition, int columnsNumber, int[,] matrix)
-{
-    int resultRow = (inputPosition - 1) / columnsNumber;
-    int resultColumn = (inputPosition - 1) % columnsNumber;
-
-    int result = matrix[resultRow, resultColumn];
-    Console.WriteLine($"{inputPosition} -> {result}");
-}
-
-
-int rowsNumber = 5;
-int columnsNumber = 5;
-int[,] matrix = new int[rowsNumber, columnsNumber];
-
-FillMatrix(matrix, rowsNumber, columnsNumber);
-GoodPrint(matrix, rowsNumber, columnsNumber);
-
-int inputPosition = int.Parse(Console.ReadLine());
-int maxPosition = rowsNumber * columnsNumber;
-
-if (inputPosition > maxPosition || inputPosition < 1)
-{
-    Console.WriteLine($"{inputPosition} -> Такого числа в массиве нет");
-}
-else
-{
-    PrintNumberAtInputPosition(inputPosition, columnsNumber, matrix);
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
 
 // Задача 52. Задайте двумерный массив из целых чисел. 
@@ -134,11 +120,33 @@ else
 // Среднее арифметическое каждого столбца: 
 // 4,6; 5,6; 3,6; 3.
 
-int RandomNumberBetween(Random rnd)
+// Получение количества строк и столбцов от пользователя
+int GetIntFromConsole(string text)
+{
+    Console.Write(text);
+    return int.Parse(Console.ReadLine());
+}
+
+// Выведение рандомных чисел в объеме строк и столбцов
+int RandomNumber(Random rnd)
 {
     return rnd.Next(0, 10);
 }
 
+// Создание из всего этого массива
+void FillArray(int[,] matrix, Random rnd)
+{
+    for (int rowIndex = 0; rowIndex < matrix.GetLength(0); rowIndex++)
+    {
+        for (int columnIndex = 0; columnIndex < matrix.GetLength(1); 
+                columnIndex++)
+        {
+            matrix[rowIndex, columnIndex] = RandomNumber(rnd);
+        }
+    }
+}
+
+// Печать результата
 void GoodPrint(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -149,32 +157,14 @@ void GoodPrint(int[,] matrix)
             Console.Write(matrix[i, j]);
             if (j != currentRowLength - 1)
             {
-                Console.Write("; ");
+                Console.Write(" | ");
             }
         }
         Console.WriteLine();
     }
 }
 
-int GetIntFromConsole(string text)
-{
-    Console.Write(text);
-    return int.Parse(Console.ReadLine());
-
-}
-
-void FillArray(int[,] matrix, Random rnd)
-{
-    for (int rowIndex = 0; rowIndex < matrix.GetLength(0); rowIndex++)
-    {
-        for (int columnIndex = 0; columnIndex < matrix.GetLength(1); columnIndex++)
-        {
-            matrix[rowIndex, columnIndex] = RandomNumberBetween(rnd);
-        }
-    }
-}
-
-void PrintColumnAverage(int columnIndex, int[,] matrix, int rowsNumber, int columnsNumber)
+void PrintColumnAverageValue(int columnIndex, int[,] matrix, int rowsNumber, int columnsNumber)
 {
     double sum = 0.0;
     for (int rowIndex = 0; rowIndex < rowsNumber; rowIndex++)
@@ -187,18 +177,19 @@ void PrintColumnAverage(int columnIndex, int[,] matrix, int rowsNumber, int colu
 
     if (columnIndex != columnsNumber - 1)
     {
-        Console.Write("; ");
+        Console.Write(" | ");
     }
 }
 
-int rowsNumber = GetIntFromConsole("Введите количество строк: ");
-int columnsNumber = GetIntFromConsole("Введите количество столбцов: ");
+int rowsNumber = GetIntFromConsole("Задайте количество строк: ");
+int columnsNumber = GetIntFromConsole("Задайте количество столбцов: ");
 int[,] matrix = new int[rowsNumber, columnsNumber];
 FillArray(matrix, new Random());
 GoodPrint(matrix);
 
-Console.WriteLine(new string('-', columnsNumber * 3));
+// Среднее арифметическое
+Console.WriteLine(new string('_', columnsNumber * 7));
 for (int columnIndex = 0; columnIndex < columnsNumber; columnIndex++)
 {
-    PrintColumnAverage(columnIndex, matrix, rowsNumber, columnsNumber);
+    PrintColumnAverageValue(columnIndex, matrix, rowsNumber, columnsNumber);
 }
