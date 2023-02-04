@@ -61,7 +61,7 @@ double GetValue(string text)
 double k1 = GetValue("Введите K1: ");
 double b1 = GetValue("Введите B1: ");
 double k2 = GetValue("Введите K2: ");
-double b2 = GetValue("Введите B1: ");
+double b2 = GetValue("Введите B2: ");
 
 var r = GoodPrint(k1, b1, k2, b2);
 Console.WriteLine(r.Item1);
