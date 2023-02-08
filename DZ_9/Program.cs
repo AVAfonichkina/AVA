@@ -5,27 +5,26 @@
 
 void PrintNumbers(int N)
 {
-    if(N==1)
+    if(N == 1)
     {
         Console.Write(N);
         return;
     }
     {
         Console.Write($"{N}, ");
-        PrintNumbers(N-1);
+        PrintNumbers(N - 1);
     }
 }
 
 
 Console.WriteLine("Введите N: ");
 int N = int.Parse(Console.ReadLine());
-
 PrintNumbers(N);
 
 
-// Задача 66: Задайте значения M и N. Напишите программу, 
-// которая найдёт сумму натуральных элементов в промежутке от M до N.
-// M = 1; N = 15 -> 120 M = 4; N = 8. -> 30
+Задача 66: Задайте значения M и N. Напишите программу, 
+которая найдёт сумму натуральных элементов в промежутке от M до N.
+M = 1; N = 15 -> 120 M = 4; N = 8. -> 30
 
 int CalculateSum(int M, int N)
 {
@@ -77,6 +76,5 @@ Console.Write("Введите m: ");
 int m = int.Parse(Console.ReadLine());
 Console.Write("Введите n: ");
 int n = int.Parse(Console.ReadLine());
-
 int result = Akkerman(m, n);
 Console.WriteLine($"m = {m}, n = {n} -> Akk(m,n) = {result}");
