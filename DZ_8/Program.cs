@@ -12,18 +12,25 @@
 // номер строки с наименьшей суммой элементов: 1 строка
 
 
+int GetIntFromConsole(string text)
+{
+    Console.Write(text);
+    return int.Parse(Console.ReadLine());
+}
+
 int RandomNumberBetween(Random rnd)
 {
     return rnd.Next(0, 10);
 }
 
-void GoodPrint(int[,] matrix, int rowsNumber, int columnsNumber)
+
+void GoodPrint(int[,] matrix, int lineNumber, int columnsNumber)
 {
-    for (int rowIndex = 0; rowIndex < rowsNumber; rowIndex++)
+    for (int lineIndex = 0; lineIndex < lineNumber; lineIndex++)
     {
         for (int columnIndex = 0; columnIndex < columnsNumber; columnIndex++)
         {
-            Console.Write(matrix[rowIndex, columnIndex]);
+            Console.Write(matrix[lineIndex, columnIndex]);
 
             if (columnIndex != columnsNumber - 1)
             {
@@ -36,59 +43,52 @@ void GoodPrint(int[,] matrix, int rowsNumber, int columnsNumber)
 }
 
 
-int GetIntFromConsole(string text)
-{
-    Console.Write(text);
-    return int.Parse(Console.ReadLine());
-}
-
 void FillArray(int[,] matrix, Random rnd)
 {
-    for (int rowIndex = 0; rowIndex < matrix.GetLength(0); rowIndex++)
+    for (int lineIndex = 0; lineIndex < matrix.GetLength(0); lineIndex++)
     {
         for (int columnIndex = 0; columnIndex < matrix.GetLength(1); columnIndex++)
         {
-            matrix[rowIndex, columnIndex] = RandomNumberBetween(rnd);
+            matrix[lineIndex, columnIndex] = RandomNumberBetween(rnd);
         }
     }
 }
 
-int GetMinSum(int[,] matrix, int rowIndex, int columnsNumber)
+
+int GetMinSum(int[,] matrix, int lineIndex, int columnsNumber)
 {
     int sum = 0;
     for (int columnIndex = 0; columnIndex < columnsNumber; columnIndex++)
     {
-        sum = sum + matrix[rowIndex, columnIndex];
+        sum = sum + matrix[lineIndex, columnIndex];
     }
 
     return sum;
 }
 
-void PrintMinSumRowNumber(int[,] matrix, int rowsNumber, int columnsNumber)
+void PrintMinSumLineNumbers(int[,] matrix, int lineNumber, int columnsNumber)
 {
-    int minSumRowIndex = 0;
-    int minSum = GetMinSum(matrix, minSumRowIndex, columnsNumber);
+    int minSumLineIndex = 0;
+    int minSum = GetMinSum(matrix, minSumLineIndex, columnsNumber);
 
-    for (int rowIndex = 1; rowIndex < rowsNumber; rowIndex++)
+    for (int lineIndex = 1; lineIndex < lineNumber; lineIndex++)
     {
-        int iteratedRowSum = GetMinSum(matrix, rowIndex, columnsNumber);
+        int iteratedRowSum = GetMinSum(matrix, lineIndex, columnsNumber);
 
         if (iteratedRowSum < minSum)
         {
-            minSumRowIndex = rowIndex;
+            minSumLineIndex = lineIndex;
             minSum = iteratedRowSum;
         }
     }
 
-    Console.WriteLine($"Строка {minSumRowIndex + 1}");
+    Console.WriteLine($"Минимальное значение суммы строки элементов: {minSumLineIndex + 1}");
 }
 
-int rowsNumber = GetIntFromConsole("Введите количество строк: ");
+int lineNumber = GetIntFromConsole("Введите количество строк: ");
 int columnsNumber = GetIntFromConsole("Введите количество столбцов: ");
-int[,] matrix = new int[rowsNumber, columnsNumber];
+int[,] matrix = new int[lineNumber, columnsNumber];
 FillArray(matrix, new Random());
-GoodPrint(matrix, rowsNumber, columnsNumber);
-
+GoodPrint(matrix, lineNumber, columnsNumber);
 Console.WriteLine(new string('-', columnsNumber * 3));
-
-PrintMinSumRowNumber(matrix, rowsNumber, columnsNumber);
+PrintMinSumLineNumbers(matrix, lineNumber, columnsNumber);
